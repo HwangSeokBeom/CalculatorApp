@@ -61,13 +61,19 @@ class ViewController: UIViewController {
         stackView.backgroundColor = .black
         stackView.distribution = .fillEqually
         stackView.spacing = 10
+        
+        stackView.snp.makeConstraints { make in
+            make.width.equalTo(350)
+        }
         return stackView
     }
     
     // 3. 메인 스택뷰 제약 설정 함수
     private func setupMainStackViewConstraints(_ stackView: UIStackView) {
         stackView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(20)
+            make.width.equalTo(350)
+            make.top.equalTo(label.snp.bottom).offset(60)
+            make.centerX.equalToSuperview()
         }
     }
     
@@ -87,6 +93,10 @@ class ViewController: UIViewController {
         stackView.backgroundColor = .black
         stackView.distribution = .fillEqually
         stackView.spacing = 10
+        
+        stackView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+        }
         return stackView
     }
     
@@ -100,9 +110,13 @@ class ViewController: UIViewController {
     
     // 7. 버튼 생성 함수
     private func createButton(with title: String) -> UIButton {
-        let button = UIButton(type: .system)
+        let button = UIButton()
         button.setTitle(title, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 30)
+        button.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
+        button.frame.size.width = 80
+        button.frame.size.height = 80
+        button.layer.cornerRadius = 40
         return button
     }
 
